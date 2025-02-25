@@ -53,7 +53,32 @@ class ConversionsTest {
 
 	@Test
 	void testStringToInteger() {
-		fail("Not yet implemented"); // Placeholder to ensure failure
+		Conversions conv = new Conversions();
+
+		// Normal conversion cases
+		assertEquals(123, conv.stringToInteger("123"), "Should convert '123' to integer 123");
+		assertEquals(-456, conv.stringToInteger("-456"), "Should convert '-456' to integer -456");
+		assertEquals(0, conv.stringToInteger("0"), "Should convert '0' to integer 0");
+
+		// Large integer cases
+		assertEquals(999999, conv.stringToInteger("999999"), "Should convert '999999' to integer 999999");
+		assertEquals(-999999, conv.stringToInteger("-999999"), "Should convert '-999999' to integer -999999");
+
+		// Edge Cases: Whitespace should be trimmed
+		assertEquals(42, conv.stringToInteger(" 42 "), "Should handle leading/trailing spaces");
+		assertEquals(-78, conv.stringToInteger("  -78 "), "Should handle leading/trailing spaces with negatives");
+
+		// Invalid cases: Non-numeric strings should throw exceptions
+		assertThrows(NumberFormatException.class, () -> conv.stringToInteger("ABC"),
+				"Invalid string should throw exception");
+		assertThrows(NumberFormatException.class, () -> conv.stringToInteger("12.5"),
+				"Decimal string should throw exception");
+		assertThrows(NumberFormatException.class, () -> conv.stringToInteger("123abc"),
+				"Mixed characters should throw exception");
+
+		// Null input should throw exception
+		assertThrows(IllegalArgumentException.class, () -> conv.stringToInteger(null),
+				"Null input should throw exception");
 	}
 
 	@Test
