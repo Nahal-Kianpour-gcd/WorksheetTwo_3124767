@@ -4,8 +4,10 @@ public class Conversions {
 
 	// Converts Euro to Dollar
 	public double euroToDollar(double euro) {
-		// Implementation will be here later
-		return 0.0;
+		if (euro < 0) {
+			throw new IllegalArgumentException("Euro amount cannot be negative");
+		}
+		return euro * 1.08; // Assuming 1 EUR = 1.08 USD
 	}
 
 	// Converts Dollar to Euro
