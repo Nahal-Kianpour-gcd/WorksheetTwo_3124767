@@ -28,10 +28,27 @@ class ConversionsTest {
 		assertEquals(1080000.0, conv.euroToDollar(1000000), 0.01, "1,000,000 Euros should convert correctly");
 	}
 
-
 	@Test
 	void testDollarToEuro() {
-		fail("Not yet implemented"); // Placeholder to ensure failure
+		Conversions conv = new Conversions();
+
+		// Normal conversion cases (Assuming 1 USD = 0.93 EUR)
+		assertEquals(0.93, conv.dollarToEuro(1), 0.01, "1 USD should be 0.93 Euros");
+		assertEquals(9.3, conv.dollarToEuro(10), 0.01, "10 USD should be 9.3 Euros");
+		assertEquals(930.0, conv.dollarToEuro(1000), 0.01, "1000 USD should be 930 Euros");
+
+		// Zero Dollars should return zero Euros
+		assertEquals(0, conv.dollarToEuro(0), "0 USD should return 0 Euros");
+
+		// Negative input should throw an exception
+		assertThrows(IllegalArgumentException.class, () -> conv.dollarToEuro(-5),
+				"Negative dollars should throw an exception");
+
+		// Edge Case: Small Decimal Values
+		assertEquals(0.0093, conv.dollarToEuro(0.01), 0.01, "0.01 USD should convert correctly");
+
+		// Edge Case: Large Value Conversion
+		assertEquals(930000.0, conv.dollarToEuro(1000000), 0.01, "1,000,000 USD should convert correctly");
 	}
 
 	@Test
