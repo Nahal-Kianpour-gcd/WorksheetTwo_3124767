@@ -31,8 +31,22 @@ public class Conversions {
 		return String.valueOf(val); // Converts int to String
 	}
 
-	// Switchs uppercase letters to lowercase and vice versa
+	// Switches uppercase letters to lowercase and vice versa
 	public String switchCase(String input) {
-		return null;
+		if (input == null) {
+			throw new IllegalArgumentException("Input string cannot be null");
+		}
+		StringBuilder switched = new StringBuilder();
+		for (char c : input.toCharArray()) {
+			if (Character.isUpperCase(c)) {
+				switched.append(Character.toLowerCase(c));
+			} else if (Character.isLowerCase(c)) {
+				switched.append(Character.toUpperCase(c));
+			} else {
+				switched.append(c); // Keep numbers and special characters unchanged
+			}
+		}
+		return switched.toString();
 	}
+
 }
