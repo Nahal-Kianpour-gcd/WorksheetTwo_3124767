@@ -20,8 +20,10 @@ public class Conversions {
 
 	// Converts String to Integer
 	public int stringToInteger(String val) {
-		// Implementation will be here later
-		return 0;
+		if (val == null) {
+			throw new IllegalArgumentException("Input string cannot be null");
+		}
+		return Integer.parseInt(val.trim()); // Trims spaces and converts string to integer
 	}
 
 	// Converts Integer to String
