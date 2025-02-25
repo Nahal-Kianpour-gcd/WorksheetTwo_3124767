@@ -103,6 +103,29 @@ class ConversionsTest {
 
 	@Test
 	void testSwitchCase() {
-		fail("Not yet implemented"); // Placeholder to ensure failure
+		Conversions conv = new Conversions();
+
+		// Normal case: Simple uppercase to lowercase and vice versa
+		assertEquals("hELLO", conv.switchCase("Hello"), "Should switch 'Hello' to 'hELLO'");
+		assertEquals("wORLD", conv.switchCase("World"), "Should switch 'World' to 'wORLD'");
+
+		// All uppercase letters
+		assertEquals("abc", conv.switchCase("ABC"), "Should switch all uppercase letters to lowercase");
+
+		// All lowercase letters
+		assertEquals("XYZ", conv.switchCase("xyz"), "Should switch all lowercase letters to uppercase");
+
+		// Mixed case
+		assertEquals("jAvA", conv.switchCase("JaVa"), "Should correctly switch each character");
+
+		// Edge Case: Numbers and special characters should remain unchanged
+		assertEquals("123!@#", conv.switchCase("123!@#"), "Numbers and special characters should not be affected");
+
+		// Edge Case: Empty string should return an empty string
+		assertEquals("", conv.switchCase(""), "Empty string should return an empty string");
+
+		// Null input should throw an exception
+		assertThrows(IllegalArgumentException.class, () -> conv.switchCase(null),
+				"Null input should throw an exception");
 	}
 }
