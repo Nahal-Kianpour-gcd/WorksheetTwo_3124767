@@ -12,8 +12,10 @@ public class Conversions {
 
 	// Converts Dollar to Euro
 	public double dollarToEuro(double dollar) {
-		// Implementation will be here later
-		return 0.0;
+		if (dollar < 0) {
+			throw new IllegalArgumentException("Dollar amount cannot be negative");
+		}
+		return dollar * 0.93; // Assuming 1 USD = 0.93 EUR
 	}
 
 	// Converts String to Integer
