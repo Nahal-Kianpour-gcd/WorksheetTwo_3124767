@@ -32,7 +32,7 @@ public class Conversions {
 	}
 
 	// Switchs uppercase letters to lowercase and vice versa
-	public String switchCase() {
+	public String switchCase(String input) {
 		return null;
 	}
 }
