@@ -83,7 +83,22 @@ class ConversionsTest {
 
 	@Test
 	void testIntegerToString() {
-		fail("Not yet implemented"); // Placeholder to ensure failure
+		Conversions conv = new Conversions();
+
+		// Normal conversion cases
+		assertEquals("123", conv.integerToString(123), "Should convert 123 to '123'");
+		assertEquals("-456", conv.integerToString(-456), "Should convert -456 to '-456'");
+		assertEquals("0", conv.integerToString(0), "Should convert 0 to '0'");
+
+		// Large integer cases
+		assertEquals("999999", conv.integerToString(999999), "Should convert 999999 to '999999'");
+		assertEquals("-999999", conv.integerToString(-999999), "Should convert -999999 to '-999999'");
+
+		// Edge Case: Integer.MIN_VALUE and Integer.MAX_VALUE
+		assertEquals(String.valueOf(Integer.MAX_VALUE), conv.integerToString(Integer.MAX_VALUE),
+				"Should handle Integer.MAX_VALUE");
+		assertEquals(String.valueOf(Integer.MIN_VALUE), conv.integerToString(Integer.MIN_VALUE),
+				"Should handle Integer.MIN_VALUE");
 	}
 
 	@Test
